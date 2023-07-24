@@ -1,0 +1,36 @@
+{
+  "name": "aigenjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ainft": "node src/ainft.js",
+    "compileAINFTTokenContract": "node src/CompileAINFTTokenContract.js",
+    "deployAINFTTokenContract": "node src/DeployAINFTTokenContract.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aigenprotocol/aigenjs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aigenprotocol/aigenjs/issues"
+  },
+  "homepage": "https://github.com/aigenprotocol/aigenjs#readme",
+  "dependencies": {
+    "@metamask/eth-sig-util": "^6.0.0",
+    "dotenv": "^16.3.1",
+    "eth-sig-util": "^3.0.1",
+    "ethereumjs-util": "^7.1.5",
+    "ethereumjs-wallet": "^1.0.2",
+    "ethers": "^5.7.2",
+    "nft.storage": "^7.0.0",
+    "node-fetch": "^3.3.1",
+    "solc": "0.8.15",
+    "w3name": "^1.0.8",
+    "web3": "^4.0.2"
+  }
+}

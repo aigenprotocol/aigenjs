@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import {createAINFT} from "./create_ainfts.js"
+import {createAINFTs} from "./create_ainfts.js"
 import {downloadAINFTs} from "./download_ainfts.js"
 import {createAIProject} from "./create_aiproject.js";
 import {slugify} from "./utils.js";
@@ -19,15 +19,14 @@ if (action === "createAIProject") {
             console.log("All AINFTs created successfully!!!")
         }
     })
-}
-else if (action === "createAINFT") {
-    createAINFT(projectId, projectName).then(status => {
+} else if (action === "createAINFTs") {
+    createAINFTs(projectId, projectName).then(status => {
         if (status) {
             console.log("All AINFTs created successfully!!!")
         }
     })
 } else if (action === "downloadAINFT") {
-    downloadAINFTs(projectId, projectName).then(()=>{
+    downloadAINFTs(projectId, projectName).then(() => {
     })
 } else {
     console.log("Invalid action!")

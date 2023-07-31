@@ -1,6 +1,6 @@
+import 'dotenv/config'
 import {provider} from "./web3_obj.js";
 import ethers from "ethers";
-import {PRIVATE_KEY} from "./config.js";
 import fs from "fs";
 
 export default function deployAINFTTokenContract(tokenName, filePath, func) {
@@ -18,7 +18,7 @@ export default function deployAINFTTokenContract(tokenName, filePath, func) {
         const abi = contract.abi;
 
         // Create wallet
-        let wallet = new ethers.Wallet(PRIVATE_KEY, provider);
+        let wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
 
         // Create contract instance with signer
         const ainfttoken = new ethers.ContractFactory(abi, bytecode, wallet);

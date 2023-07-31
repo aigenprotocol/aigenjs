@@ -4,6 +4,14 @@ import {getLaunchpadContract} from "./web3_obj.js";
 import {ethers} from "ethers";
 import path from "path";
 
+/**
+ * Create AI Project
+ * @param projectName
+ * @param projectDescription
+ * @param logo_filepath
+ * @param banner_filepath
+ * @returns {Promise<void>}
+ */
 export async function createAIProject(projectName, projectDescription, logo_filepath, banner_filepath) {
     // Upload the images to NFT.Storage
     let logoBuffer = await fs.readFileSync(logo_filepath)
@@ -29,7 +37,7 @@ export async function createAIProject(projectName, projectDescription, logo_file
     let projectMetadataUrl = await uploadJSONToNFTStorage(projectMetadata);
     console.log("Project metadata uploaded:", projectMetadataUrl)
 
-    // create project
+    // create w3name link
     let w3name = createW3NameLink(projectMetadataUrl);
 
     try {
@@ -44,8 +52,8 @@ export async function createAIProject(projectName, projectDescription, logo_file
                 console.log('Created project with ID:', projectId);
 
                 // create project folder
-                if(!fs.existsSync(path.join(process.env.PROJECTS_DIR, projectName+"_"+projectId))){
-                    fs.mkdirSync(path.join(process.env.PROJECTS_DIR, projectName+"_"+projectId))
+                if (!fs.existsSync(path.join(process.env.PROJECTS_DIR, projectName + "_" + projectId))) {
+                    fs.mkdirSync(path.join(process.env.PROJECTS_DIR, projectName + "_" + projectId))
                 }
 
                 await saveSigningKeys(w3name, projectId, projectName)

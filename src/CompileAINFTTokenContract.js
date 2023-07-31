@@ -11,7 +11,7 @@ function createInput(tokenName, tokenTicker) {
     const inboxPath = path.resolve(__dirname, 'contracts', currentTokenName); //current working directory
     let source = fs.readFileSync(inboxPath, 'utf8').replaceAll(currentTokenName, tokenName).replaceAll(currentTokenTicker, tokenTicker); //read raw source file
     let sources = {}
-    sources[tokenName+".sol"] = {content: source}
+    sources[tokenName + ".sol"] = {content: source}
 
     return {
         language: 'Solidity',

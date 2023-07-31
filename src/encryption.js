@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import {encrypt, getEncryptionPublicKey, decrypt} from "@metamask/eth-sig-util";
+import {decrypt, encrypt, getEncryptionPublicKey} from "@metamask/eth-sig-util";
 import {bufferToHex, toBuffer} from "ethereumjs-util";
 
 export function generateKey() {
@@ -27,7 +27,6 @@ export function encryptDataRSA(data, key) {
 }
 
 export function encryptDataAES(data, key, iv) {
-    //console.log(key)
     // the cipher function
     const cipher = crypto.createCipheriv("aes-256-cbc", key, iv);
 
@@ -35,9 +34,6 @@ export function encryptDataAES(data, key, iv) {
     let encryptedData = cipher.update(data, "utf-8", "hex");
 
     encryptedData += cipher.final("hex");
-
-    //console.log("Encrypted data: " + encryptedData);
-
     return encryptedData
 }
 
@@ -48,9 +44,6 @@ export function decryptDataAES(data, key, iv) {
     let decryptedData = decipher.update(data, "hex", "utf-8");
 
     decryptedData += decipher.final("utf8");
-
-    console.log("Encrypted data:", decryptedData);
-
     return decryptedData
 }
 

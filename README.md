@@ -3,7 +3,8 @@
 <h3>
 Aigenjs
 </h3>
-Nodejs library
+Aigen's nodejs library containing scripts to upload/download files to/from NFT.Storage, mint AINFTs, download AINFTs, compile/deploy 
+smart contracts, and other helper functions
 </div>
 
 ### create environment variables
@@ -20,8 +21,21 @@ NFTSTORAGE_TOKEN=<NFTStorage Token>
 AIGEN_LAUNCHPAD_CONTRACT_ADDRESS=0x000000000000000000000000000000000
 ```
 
-### compile & deploy AINFTToken.sol smart contract
-The smart contract can be found at contracts->AINFTToken.sol
+### install node dependencies
+
+```
+npm install
+
+or 
+
+yarn
+```
+
+### compile & deploy smart contracts
+The smart contracts can be found inside the contracts directory
+
+1. AINFTToken.sol
+2. AigenLaunchpad.sol
 
 ##### compile
 ```
@@ -35,5 +49,34 @@ npm run deployAINFTTokenContract
 this will automatically deploy the smart contract to 'PROVIDER_URL'
 
 Note:
-* Using Remix IDE, deploy the smart contract to the local Ganache or Goerli testnet.
+* You can also use Remix IDE to deploy the smart contract to the local Ganache or Goerli testnet.
 * It is recommended that you test the smart contract before deploying it to the mainnet.
+
+### create AI project
+
+```
+npm run ainft --action="createAIProject" --project_name="test" --project_description="test project" 
+--project_logo_path="<project_logo_path>" --project_banner_path="<project_banner_path>"
+```
+
+### mint AINFTs
+
+```
+npm run ainft --action="createAINFT" --project_id="10" --project_name="test"
+```
+this step will deploy files to NFTStorage and mint AINFTs
+
+
+### download AINFTs
+
+```
+npm run ainft --action=downloadAINFT --project_id="10" --project_name="test"
+```
+this will automatically download and decrypt the content of AINFTs
+
+
+## License
+
+<a href="LICENSE.rst"><img src="https://img.shields.io/github/license/aigenprotocol/aigenjs"></a>
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.rst) file for details
